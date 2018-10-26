@@ -5,8 +5,8 @@ module.exports = {
     umd: {
       global: 'react-scroll-section',
       externals: {
-        react: 'React'
-      }
-    }
-  }
-}
+        react: 'React',
+      },
+    },
+  },
+};

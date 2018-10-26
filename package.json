@@ -20,15 +20,25 @@
     "test:watch": "nwb test-react --server",
     "deploy": "gh-pages -d demo/dist"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.11"
+  },
   "peerDependencies": {
     "react": "16.x"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
     "gh-pages": "^2.0.1",
     "nwb": "0.23.x",
     "react": "^16.6.0",
-    "react-dom": "^16.6.0"
+    "react-dom": "^16.6.0",
+    "styled-components": "^4.0.2"
   },
   "author": "EmaSuriano",
   "homepage": "https://emasuriano.github.io/react-scroll-section/",
