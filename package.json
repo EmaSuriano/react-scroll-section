@@ -1,7 +1,7 @@
 {
   "name": "react-scroll-section",
   "version": "1.0.0",
-  "description": "react-scroll-section React component",
+  "description": "React library to provide a declarative scroll to between sections",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -17,22 +17,28 @@
     "start": "nwb serve-react-demo",
     "test": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
-    "test:watch": "nwb test-react --server"
+    "test:watch": "nwb test-react --server",
+    "deploy": "gh-pages -d demo/dist"
   },
   "dependencies": {},
   "peerDependencies": {
     "react": "16.x"
   },
   "devDependencies": {
+    "gh-pages": "^2.0.1",
     "nwb": "0.23.x",
     "react": "^16.6.0",
     "react-dom": "^16.6.0"
   },
-  "author": "",
-  "homepage": "",
+  "author": "EmaSuriano",
+  "homepage": "https://emasuriano.github.io/react-scroll-section/",
   "license": "MIT",
   "repository": "",
   "keywords": [
-    "react-component"
+    "react-component",
+    "scroll",
+    "scrolling",
+    "section",
+    "declarative"
   ]
 }
