@@ -9,4 +9,9 @@ module.exports = {
       },
     },
   },
+  webpack: {
+    html: {
+      template: 'demo/src/index.html',
+    },
+  },
 };

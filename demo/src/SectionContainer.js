@@ -1,4 +1,3 @@
-import * as React from 'react';
 import styled from 'styled-components';
 
 const SectionContainer = styled.section`
@@ -7,21 +6,13 @@ const SectionContainer = styled.section`
   max-width: 1366px;
   display: flex;
   margin: auto;
-  border: 10px black solid;
   flex: 0 1 auto;
   flex-direction: column;
   justify-content: center;
-  padding: 5em 1em;
+  text-align: center;
+  font-size: 4em;
   scroll-behavior: smooth;
+  position: 'relative';
 `;
 
-const DefaultBackground = () => <div />;
-
-const Container = ({ children, Background = DefaultBackground }) => (
-  <div style={{ position: 'relative' }}>
-    <Background />
-    <SectionContainer>{children}</SectionContainer>
-  </div>
-);
-
-export default Container;
+export default SectionContainer;
