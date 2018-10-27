@@ -1,6 +1,6 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
-import debounce from 'lodash/debounce';
+import debounce from 'debounce';
 import { Provider } from './scrollContext';
 
 export default class ScrollingProvider extends React.Component {
@@ -22,8 +22,6 @@ export default class ScrollingProvider extends React.Component {
   handleScroll = () => {
     const selected = Object.entries(this.refList).reduce(
       (acc, [key, value]) => {
-        // const node = ReactDOM.findDOMNode(value.current);
-        // const { top } = node.getBoundingClientRect();
         const { top } = value.current.getBoundingClientRect();
         const differenceFromTop = Math.abs(top);
 

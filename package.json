@@ -21,7 +21,7 @@
     "deploy": "gh-pages -d demo/dist"
   },
   "dependencies": {
-    "lodash": "^4.17.11"
+    "debounce": "^1.2.0"
   },
   "peerDependencies": {
     "react": "16.x"
