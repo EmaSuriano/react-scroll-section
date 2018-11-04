@@ -1,0 +1,51 @@
+---
+name: Introduction
+route: /
+order: 1 
+---
+
+import Logo from './Logo.js'
+import logoSvg from './logo.svg';
+
+# Introduction
+
+<div style={{ textAlign: 'center'}}>
+  <h1>React Scroll Section</h1> 
+  <img src={logoSvg} alt="React Scroll Section logo" />
+  <h2>
+    <strong>A declarative solution to vertically navigate your React App</strong>
+  </h2>
+</div>
+
+## Why you should use it? 🤔
+
+When you think about implementing a `scrollTo` functionality in a website the first thing it will your mind will be jQuery, using the following line of code: 
+
+``` javascript
+  $( "#target" ).scroll();
+```
+
+I won't deny that actually works, but the problem comes when you start working with frameworks based on component, like React.
+
+Manage the navigation to another section and which section can be hard task without a state management library.
+
+This library will help you to avoid thinking all the possible edges cases and focus on the final result, which is just provide an easy navigation inside your app.
+
+## Basic Example ✅
+
+<iframe src="https://codesandbox.io/embed/30qmm4m2j5?view=preview" style={{width:'100%', height:'500px', border:0, borderRadius: '4px', overflow:'hidden'}} sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
+## Built with 🔧
+
+Just React! Using the features of:
+
+* Context API: using the of `<Consumer />` and `<Provider />`.
+* Ref: new `createRef` API!
+
+## License 🔖
+
+MIT.
+
+## Contribute ❤️
+
+I'm super open to PRs! Could be improvement of performance, small changes in API, more documentation whatever you want 😁

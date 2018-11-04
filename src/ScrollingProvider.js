@@ -5,8 +5,11 @@ import { Provider } from './scrollContext';
 
 export default class ScrollingProvider extends React.Component {
   static propTypes = {
+    /** ms. to wait until the calculation of the current section */
     debounceDelay: PropTypes.number,
+    /** scrolling style */
     scrollBehavior: PropTypes.oneOf(['auto', 'smooth']),
+    /** React component */
     children: PropTypes.node,
   };
 
@@ -63,13 +66,15 @@ export default class ScrollingProvider extends React.Component {
   };
 
   scrollTo = section => {
-    // const myDomNode = ReactDOM.findDOMNode(this.refList[section].current);
     const { scrollBehavior: behavior } = this.props;
-    const myDomNode = this.refList[section].current;
+    const sectionRef = this.refList[section];
+    if (!sectionRef) return console.warn('Section ID not recognized!');
+
+    const top = sectionRef.current.offsetTop;
 
     this.setState({ selected: section }, () =>
       window.scrollTo({
-        top: myDomNode.offsetTop,
+        top,
         behavior,
       }),
     );

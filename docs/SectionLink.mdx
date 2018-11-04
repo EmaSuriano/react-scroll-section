@@ -1,0 +1,28 @@
+---
+name: SectionLink
+menu: Components
+---
+
+import { PropsTable  } from 'docz'
+import { SectionLink } from '../src';
+
+# SectionLink
+
+## Properties
+
+<PropsTable of={SectionLink} />
+
+##  Usage
+
+Given a `Section` ID it will return a `renderProp` that can trigger the navigation to the `Section` and know if the `Section` is selected.
+
+In case you provide an invalid `Section` ID, the application won't perform any navigation.
+
+``` javascript
+<SectionLink section="home">
+  {({ onClick, isSelect}) => <Item onClick={onClick} selected={isSelected}>Home</Item>}
+</SectionLink>
+<SectionLink id="about">
+  {({ onClick, isSelect}) => <Item onClick={onClick} selected={isSelected}>About</Item>}
+</SectionLink>
+```
