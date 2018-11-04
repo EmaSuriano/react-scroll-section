@@ -1,0 +1,46 @@
+---
+name: Getting started
+---
+
+# Getting started
+
+## Installation
+
+The library is available as a package in npm and yarn, so use the one you prefer the most.
+
+``` bash
+# npm
+$ npm install react-scroll-section
+
+# yarn
+$ yarn add react-scroll-section
+```
+
+## Using
+
+The library provides you 3 components:
+
+* ScrollingProvider: responsible to move between the Sections and know which Section is selected. 
+* SectionLink: giving a Section ID will perform the navigation after clicking on it.
+* Section: just a `<section />` that receives an ID and register it on ScrollingProvider.
+
+So if you group them all together, you would end up with the following pseudo code: 
+
+``` jsx
+  <ScrollingProvider>
+    <div>
+      <SectionLink section="home">
+        {({ onClick, isSelected}) => (
+          <Item onClick={onClick} selected={isSelected}> Home </Item>
+        )}
+      </SectionLink>
+      <SectionLink section="about">
+        {({ onClick, isSelected}) => (
+          <Item onClick={onClick} selected={isSelected}> About </Item>
+        )}
+      </SectionLink>
+    </div>
+    <Section id="home">Home section</Section>
+    <Section id="about">About section</Section>
+  </ScrollingProvider>
+```
