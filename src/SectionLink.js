@@ -1,17 +1,22 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import { withScrollingConsumer } from './scrollContext';
+import { Consumer } from './scrollContext';
 
-const SectionLink = ({ scrollTo, section, selected, children }) => {
-  const onClick = () => scrollTo(section);
-  const isSelected = selected === section;
-  return children({ onClick, isSelected });
-};
+const SectionLink = ({ section, children }) => (
+  <Consumer>
+    {({ scrollTo, selected }) => {
+      const onClick = () => scrollTo(section);
+      const isSelected = selected === section;
+      return children({ onClick, isSelected });
+    }}
+  </Consumer>
+);
 
-SectionLink.propsTypes = {
-  scrollTo: PropTypes.func.isRequired,
+SectionLink.propTypes = {
+  /** Section ID */
   section: PropTypes.string.isRequired,
-  selected: PropTypes.string.isRequired,
+  /** renderProp */
   children: PropTypes.func.isRequired,
 };
 
-export default withScrollingConsumer(SectionLink);
+export default SectionLink;

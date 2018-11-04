@@ -1,16 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withScrollingConsumer } from './scrollContext';
+import { Consumer } from './scrollContext';
 
-const Section = ({ registerRef, id, children }) => (
-  <section ref={registerRef(id)} id={id}>
-    {children}
-  </section>
+const Section = ({ id, children }) => (
+  <Consumer>
+    {({ registerRef }) => (
+      <section ref={registerRef(id)} id={id}>
+        {children}
+      </section>
+    )}
+  </Consumer>
 );
 
 Section.propTypes = {
-  registerRef: PropTypes.func.isRequired,
+  /** Section ID */
   id: PropTypes.string.isRequired,
+  /** Section content */
   children: PropTypes.node,
 };
 
@@ -18,4 +23,4 @@ Section.defaultProps = {
   children: null,
 };
 
-export default withScrollingConsumer(Section);
+export default Section;
