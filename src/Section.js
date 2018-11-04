@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withScrollingConsumer } from './scrollContext';
 
 const Section = ({ registerRef, id, children }) => (
@@ -6,5 +7,15 @@ const Section = ({ registerRef, id, children }) => (
     {children}
   </section>
 );
+
+Section.propTypes = {
+  registerRef: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
+
+Section.defaultProps = {
+  children: null,
+};
 
 export default withScrollingConsumer(Section);
