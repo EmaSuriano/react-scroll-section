@@ -9,7 +9,7 @@ const App = () => (
   <ScrollingProvider scrollBehavior="smooth">
     <Menu>
       <Item section="home">HOME</Item>
-      <Item section="park">ABOUT</Item>
+      <Item section="about">ABOUT</Item>
       <Item section="projects">PROJECTS</Item>
       <Item section="contact">CONTACT</Item>
     </Menu>
