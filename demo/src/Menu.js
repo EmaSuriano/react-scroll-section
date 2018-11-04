@@ -7,6 +7,9 @@ const Menu = styled.ul`
   z-index: 1;
   left: 50%;
   transform: translateX(-50%);
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
   margin: 0;
 `;
 

@@ -4,7 +4,7 @@
 [![npm package][npm-badge]][npm]
 [![Coveralls][coveralls-badge]][coveralls]
 
-Describe react-scroll-section here.
+Too check the documentation please go to the [hosted version](https://react-scroll-section.netlify.com).
 
 [build-badge]: https://img.shields.io/travis/EmaSuriano/react-scroll-section/master.svg
 [build]: https://travis-ci.org/EmaSuriano/react-scroll-section

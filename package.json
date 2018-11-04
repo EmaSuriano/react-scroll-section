@@ -19,7 +19,9 @@
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server",
     "deploy": "gh-pages -d demo/dist",
-    "lint": "eslint ./src"
+    "lint": "eslint ./src",
+    "docz:dev": "docz dev",
+    "docz:build": "docz build"
   },
   "dependencies": {
     "debounce": "^1.2.0",
@@ -30,6 +32,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
+    "docz": "^0.12.9",
     "eslint": "^5.7.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.1.0",
