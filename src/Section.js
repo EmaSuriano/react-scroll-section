@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Consumer } from './scrollContext';
 
-const Section = ({ id, children }) => (
+const Section = ({ id, children, ...rest }) => (
   <Consumer>
     {({ registerRef }) => (
-      <section ref={registerRef(id)} id={id}>
+      <section ref={registerRef(id)} id={id} {...rest}>
         {children}
       </section>
     )}
