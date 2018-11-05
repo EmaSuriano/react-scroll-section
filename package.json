@@ -25,7 +25,8 @@
   },
   "dependencies": {
     "debounce": "^1.2.0",
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "react-github-corner": "^2.3.0"
   },
   "peerDependencies": {
     "react": "16.x"
@@ -48,7 +49,7 @@
   "author": "EmaSuriano",
   "homepage": "https://emasuriano.github.io/react-scroll-section/",
   "license": "MIT",
-  "repository": "",
+  "repository": "https://github.com/EmaSuriano/react-scroll-section",
   "keywords": [
     "react-component",
     "scroll",
