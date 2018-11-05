@@ -4,13 +4,13 @@
 [![npm package][npm-badge]][npm]
 [![Coveralls][coveralls-badge]][coveralls]
 
-<div style="text-align: center">
-  <h1>React Scroll Section</h1> 
+<p align="center">
   <img src="./docs/logo.svg" alt="React Scroll Section logo" />
-  <h2>
-    <strong>A declarative solution to vertically navigate your React App</strong>
-  </h2>
-</div>
+</p>
+
+<p align="center">
+  <b>A declarative solution to vertically navigate your React App</b>
+</p>
 
 Too check the documentation please go to the [hosted version](https://react-scroll-section.netlify.com).
 
