@@ -72,7 +72,7 @@ export default class ScrollingProvider extends React.Component {
 
     const top = sectionRef.current.offsetTop;
 
-    this.setState({ selected: section }, () =>
+    return this.setState({ selected: section }, () =>
       window.scrollTo({
         top,
         behavior,
