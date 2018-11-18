@@ -21,12 +21,12 @@
     "deploy": "gh-pages -d demo/dist",
     "lint": "eslint ./src",
     "docz:dev": "docz dev",
-    "docz:build": "docz build"
+    "docz:build": "docz build",
+    "react-github-corner": "^2.3.0"
   },
   "dependencies": {
     "debounce": "^1.2.0",
-    "prop-types": "^15.6.2",
-    "react-github-corner": "^2.3.0"
+    "prop-types": "^15.6.2"
   },
   "peerDependencies": {
     "react": "16.x"
