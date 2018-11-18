@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { createGlobalStyle } from 'styled-components';
 import GithubCorner from 'react-github-corner';
 import App from './App';
+import 'react-toggle/style.css';
 
 const GlobalStyle = createGlobalStyle`
   body {

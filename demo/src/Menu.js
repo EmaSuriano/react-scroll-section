@@ -27,16 +27,6 @@ const Item = styled.li`
   border-top: 5px solid ${props => (props.selected ? '#ff7e67' : 'transparent')};
 `;
 
-const MenuItem = ({ section, children }) => (
-  <SectionLink section={section}>
-    {link => (
-      <Item onClick={link.onClick} selected={link.isSelected}>
-        {children}
-      </Item>
-    )}
-  </SectionLink>
-);
-
-export { MenuItem as Item, Menu };
+export { Item, Menu };
 
 export default styled;

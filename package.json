@@ -1,6 +1,6 @@
 {
   "name": "react-scroll-section",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "React library to provide a declarative scroll to between sections",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -44,6 +44,7 @@
     "nwb": "0.23.x",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "react-toggle": "^4.0.2",
     "styled-components": "^4.0.2"
   },
   "author": "EmaSuriano",
