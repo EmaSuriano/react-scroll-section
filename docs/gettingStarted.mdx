@@ -21,8 +21,9 @@ $ yarn add react-scroll-section
 The library provides you 3 components:
 
 * ScrollingProvider: responsible to link `Section` and `SectionLink` and know which `Section` is selected. 
-* SectionLink: giving a `Section` ID will perform the navigation after clicking on it.
-* Section: just a `<section />` that receives a `Section` ID and save it on `ScrollingProvider`.
+* SectionLink: giving a `Section` ID will perform the navigation after clicking on it. This is the best approach when you know the amount of sections your application has.
+* SectionLinks: provides all the `Section` references registered inside the application. This is perfect when you want to dinamically add links depending on the section you have.
+* Section: just a `<section />` that receives a `Section` ID and register itself on `ScrollingProvider`.
 
 So if you group them all together, you would end up with the following pseudo code: 
 
