@@ -5,10 +5,10 @@
 [![Coveralls][coveralls-badge]][coveralls]
 
 <p align="center">
-  <img src="./docs/logo.svg" alt="React Scroll Section logo" />
-</p>
-
-<p align="center">
+  <a  href="https://react-scroll-section.netlify.com/">
+    <img src="./docs/logo.svg" alt="React Scroll Section logo"/>
+  </a>
+  <br />
   <b>A declarative solution to vertically navigate your React App</b>
 </p>
 
