@@ -7,6 +7,7 @@
 <p align="center">
   <img src="./docs/logo.svg" alt="React Scroll Section logo"/>
 </p>
+
 <h3 align="center">A declarative solution to vertically navigate your React App</h3>
 
 ## Live demo ✨

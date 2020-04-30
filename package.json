@@ -14,7 +14,7 @@
     "start": "nwb serve-react-demo",
     "build": "nwb build-react-component",
     "prepublish": "yarn build",
-    "lint": "eslint ./src ./demo ./cypress",
+    "lint": "eslint ./src ./demo/src ./cypress",
     "test": "cypress run",
     "test:open": "cypress open",
     "test:ci": "start-server-and-test 3000"
