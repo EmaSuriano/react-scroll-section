@@ -4,9 +4,9 @@ import { SectionLink, SectionLinks } from '../../src';
 
 const CONFIRM_KEYS = [13, 32];
 
-const A11yItem = props => (
+const A11yItem = (props) => (
   <Item
-    onKeyDown={e => {
+    onKeyDown={(e) => {
       if (CONFIRM_KEYS.includes(e.keyCode)) {
         e.preventDefault();
         props.onClick();
@@ -33,7 +33,7 @@ export const DynamicMenu = () => (
 
 const MenuSection = ({ section, children }) => (
   <SectionLink section={section}>
-    {link => (
+    {(link) => (
       <A11yItem onClick={link.onClick} selected={link.isSelected}>
         {children}
       </A11yItem>

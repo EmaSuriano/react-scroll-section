@@ -1,23 +1,17 @@
-Cypress.Commands.add('checkHeader', labelList => {
-  labelList.forEach(label => {
-    cy.get('li')
-      .contains(label)
-      .should('be.visible');
+Cypress.Commands.add('checkHeader', (labelList) => {
+  labelList.forEach((label) => {
+    cy.get('li').contains(label).should('be.visible');
   });
 });
 
-Cypress.Commands.add('clickOnHeader', label => {
-  cy.get('li')
-    .contains(label)
-    .click();
+Cypress.Commands.add('clickOnHeader', (label) => {
+  cy.get('li').contains(label).click();
 
   cy.wait(500);
 });
 
-Cypress.Commands.add('clickOnHeader', label => {
-  cy.get('li')
-    .contains(label)
-    .click();
+Cypress.Commands.add('clickOnHeader', (label) => {
+  cy.get('li').contains(label).click();
 
   cy.wait(500);
 });

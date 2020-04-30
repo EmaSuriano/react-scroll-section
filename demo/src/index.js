@@ -11,8 +11,8 @@ import 'react-toggle/style.css';
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
-    background: ${props => props.theme.background};
-    color: ${props => props.theme.text};
+    background: ${(props) => props.theme.background};
+    color: ${(props) => props.theme.text};
     font-family: 'Cabin', sans-serif;
   }
 `;

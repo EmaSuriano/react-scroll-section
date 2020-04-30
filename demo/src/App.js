@@ -21,7 +21,7 @@ export default class App extends Component {
         <Footer>
           <ModeToggle
             menu={menu}
-            onChange={selected => this.setState({ menu: selected })}
+            onChange={(selected) => this.setState({ menu: selected })}
           />
           <a href="https://www.netlify.com">
             <img

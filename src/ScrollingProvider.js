@@ -61,13 +61,13 @@ export default class ScrollingProvider extends React.Component {
 
   debounceScroll = debounce(this.handleScroll, this.props.debounceDelay || 50);
 
-  registerRef = id => {
+  registerRef = (id) => {
     const newRef = React.createRef();
     this.refList = { ...this.refList, [id]: newRef };
     return newRef;
   };
 
-  scrollTo = section => {
+  scrollTo = (section) => {
     const { scrollBehavior: behavior, offset } = this.props;
     const sectionRef = this.refList[section];
     if (!sectionRef) return console.warn('Section ID not recognized!'); // eslint-disable-line
