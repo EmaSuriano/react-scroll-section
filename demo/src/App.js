@@ -1,55 +1,35 @@
 /* eslint import/no-extraneous-dependencies: 0 */
 
 import React, { Component } from 'react';
-import Toggle from 'react-toggle';
-import styled from 'styled-components';
-import { ScrollingProvider, Section } from '../../src';
-import SectionContainer from './SectionContainer';
-import StaticMenu from './StaticMenu';
-import DynamicMenu from './DynamicMenu';
+import { ScrollingProvider } from '../../src';
+import { DynamicMenu, StaticMenu } from './Menu';
+import Sections from './Sections';
+import { Footer } from './Builders';
+import ModeToggle, { MODE } from './ModeToggle';
 
-const MenuTypeContainer = styled.div`
-  position: fixed;
-  display: flex;
-  bottom: 0;
-  align-items: center;
-  margin: 10px;
-`;
 export default class App extends Component {
   state = {
-    menu: 'static',
-  };
-
-  toggleMenu = () => {
-    const { menu } = this.state;
-    const newMenu = menu === 'static' ? 'dynamic' : 'static';
-    this.setState({ menu: newMenu });
+    menu: MODE.static,
   };
 
   render() {
     const { menu } = this.state;
     return (
       <ScrollingProvider scrollBehavior="smooth">
-        {menu === 'static' ? <StaticMenu /> : <DynamicMenu />}
-        <MenuTypeContainer>
-          <Toggle id="menu-type" onChange={this.toggleMenu} />
-          <label
-            htmlFor="menu-type"
-            style={{ marginLeft: '10px' }}
-          >{`Menu type: ${menu}`}</label>
-        </MenuTypeContainer>
-        <Section id="home">
-          <SectionContainer background="lightblue">🏠</SectionContainer>
-        </Section>
-        <Section id="about">
-          <SectionContainer background="orange">🙋‍♂️</SectionContainer>
-        </Section>
-        <Section id="projects">
-          <SectionContainer background="orange">💻</SectionContainer>
-        </Section>
-        <Section id="contact">
-          <SectionContainer background="orange">💌</SectionContainer>
-        </Section>
+        {menu === MODE.static ? <StaticMenu /> : <DynamicMenu />}
+        <Sections />
+        <Footer>
+          <ModeToggle
+            menu={menu}
+            onChange={(selected) => this.setState({ menu: selected })}
+          />
+          <a href="https://www.netlify.com">
+            <img
+              src="https://www.netlify.com/img/global/badges/netlify-color-bg.svg"
+              alt="Deploys by Netlify"
+            />
+          </a>
+        </Footer>
       </ScrollingProvider>
     );
   }

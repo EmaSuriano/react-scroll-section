@@ -1,15 +1,17 @@
-sudo: false
-
 language: node_js
+
 node_js:
-  - 10
+  - '10'
 
-before_install:
-  - yarn add coveralls
+cache:
+  directories:
+    - ~/.npm
+    - ~/.cache
 
-after_success:
-  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+install:
+  - yarn
 
-branches:
-  only:
-    - master
+script:
+  - yarn lint
+  - yarn test:ci
+  - yarn build

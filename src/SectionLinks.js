@@ -10,7 +10,7 @@ const SectionLink = ({ children }) => (
           ...acc,
           [curr]: {
             onClick: () => scrollTo(curr),
-            selected: selected === curr,
+            isSelected: selected === curr,
           },
         }),
         {},

@@ -9,6 +9,8 @@ export default class ScrollingProvider extends React.Component {
     debounceDelay: PropTypes.number,
     /** scrolling style */
     scrollBehavior: PropTypes.oneOf(['auto', 'smooth']),
+    /** Vertical offset regarding the Section */
+    offset: PropTypes.number,
     /** React component */
     children: PropTypes.node,
   };
@@ -17,6 +19,7 @@ export default class ScrollingProvider extends React.Component {
     debounceDelay: 50,
     scrollBehavior: 'smooth',
     children: null,
+    offset: 0,
   };
 
   state = {
@@ -56,21 +59,20 @@ export default class ScrollingProvider extends React.Component {
     this.setState({ selected: selected.key });
   };
 
-  // eslint-disable-next-line
   debounceScroll = debounce(this.handleScroll, this.props.debounceDelay || 50);
 
-  registerRef = id => {
+  registerRef = (id) => {
     const newRef = React.createRef();
     this.refList = { ...this.refList, [id]: newRef };
     return newRef;
   };
 
-  scrollTo = section => {
-    const { scrollBehavior: behavior } = this.props;
+  scrollTo = (section) => {
+    const { scrollBehavior: behavior, offset } = this.props;
     const sectionRef = this.refList[section];
-    if (!sectionRef) return console.warn('Section ID not recognized!');
+    if (!sectionRef) return console.warn('Section ID not recognized!'); // eslint-disable-line
 
-    const top = sectionRef.current.offsetTop;
+    const top = sectionRef.current.offsetTop + offset;
 
     return this.setState({ selected: section }, () =>
       window.scrollTo({

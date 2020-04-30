@@ -1,32 +1,51 @@
 import React from 'react';
-import { SectionLink } from '../../src';
-import styled from 'styled-components';
+import { Menu, Item } from './Builders';
+import { SectionLink, SectionLinks } from '../../src';
 
-const Menu = styled.ul`
-  position: fixed;
-  z-index: 1;
-  left: 50%;
-  transform: translateX(-50%);
-  display: table;
-  margin-left: auto;
-  margin-right: auto;
-  margin: 0;
-`;
+const CONFIRM_KEYS = [13, 32];
 
-const Item = styled.li`
-  display: inline-block;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.25s;
-  margin: 0;
-  padding: 40px 10px;
-  font-weight: bold;
-  font-size: 20px;
-  user-select: none;
-  color: ${props => (props.selected ? '#07689f' : 'inherit')};
-  border-top: 5px solid ${props => (props.selected ? '#ff7e67' : 'transparent')};
-`;
+const A11yItem = (props) => (
+  <Item
+    onKeyDown={(e) => {
+      if (CONFIRM_KEYS.includes(e.keyCode)) {
+        e.preventDefault();
+        props.onClick();
+      }
+    }}
+    tabIndex="1"
+    {...props}
+  />
+);
 
-export { Item, Menu };
+export const DynamicMenu = () => (
+  <Menu>
+    <SectionLinks>
+      {({ allLinks }) =>
+        Object.entries(allLinks).map(([key, link]) => (
+          <A11yItem key={key} onClick={link.onClick} selected={link.isSelected}>
+            {key.toUpperCase()}
+          </A11yItem>
+        ))
+      }
+    </SectionLinks>
+  </Menu>
+);
 
-export default styled;
+const MenuSection = ({ section, children }) => (
+  <SectionLink section={section}>
+    {(link) => (
+      <A11yItem onClick={link.onClick} selected={link.isSelected}>
+        {children}
+      </A11yItem>
+    )}
+  </SectionLink>
+);
+
+export const StaticMenu = () => (
+  <Menu>
+    <MenuSection section="home">LANDING</MenuSection>
+    <MenuSection section="about">ABOUT ME</MenuSection>
+    <MenuSection section="projects">MY PROJECTS</MenuSection>
+    <MenuSection section="contact">CONTACT ME!</MenuSection>
+  </Menu>
+);
