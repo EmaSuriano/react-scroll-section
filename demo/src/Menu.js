@@ -1,6 +1,6 @@
 import React from 'react';
 import { Menu, Item } from './Builders';
-import { SectionLink } from '../../src';
+import { SectionLink, SectionLinks } from '../../src';
 
 const MenuSection = ({ section, children }) => (
   <SectionLink section={section}>
@@ -12,7 +12,21 @@ const MenuSection = ({ section, children }) => (
   </SectionLink>
 );
 
-const StaticMenu = () => (
+export const DynamicMenu = () => (
+  <Menu>
+    <SectionLinks>
+      {({ allLinks }) =>
+        Object.entries(allLinks).map(([key, value]) => (
+          <Item key={key} onClick={value.onClick} selected={value.selected}>
+            {key.toUpperCase()}
+          </Item>
+        ))
+      }
+    </SectionLinks>
+  </Menu>
+);
+
+export const StaticMenu = () => (
   <Menu>
     <MenuSection section="home">LANDING</MenuSection>
     <MenuSection section="about">ABOUT ME</MenuSection>
@@ -20,5 +34,3 @@ const StaticMenu = () => (
     <MenuSection section="contact">CONTACT ME!</MenuSection>
   </Menu>
 );
-
-export default StaticMenu;

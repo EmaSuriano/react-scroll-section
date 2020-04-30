@@ -3,16 +3,15 @@
 import React, { Component } from 'react';
 import Toggle from 'react-toggle';
 import styled from 'styled-components';
-import { ScrollingProvider, Section } from '../../src';
-import { SectionContainer } from './Builders';
-import StaticMenu from './StaticMenu';
-import DynamicMenu from './DynamicMenu';
+import { ScrollingProvider } from '../../src';
+
+import { DynamicMenu, StaticMenu } from './Menu';
+import Sections from './Sections';
 
 const MenuTypeContainer = styled.div`
   position: fixed;
   display: flex;
   bottom: 0;
-
   align-items: center;
   margin: 10px;
 `;
@@ -22,15 +21,24 @@ const MENU_MODE = {
   dynamic: 'Dynamic',
 };
 
+const MenuToggle = ({ menu, onChange }) => (
+  <MenuTypeContainer>
+    <Toggle
+      id="menu-type"
+      defaultChecked={menu === MENU_MODE.static}
+      onChange={({ currentTarget }) =>
+        onChange(currentTarget.checked ? MENU_MODE.static : MENU_MODE.dynamic)
+      }
+    />
+    <label htmlFor="menu-type" style={{ marginLeft: '10px' }}>
+      {`Menu type: ${menu}`}
+    </label>
+  </MenuTypeContainer>
+);
+
 export default class App extends Component {
   state = {
     menu: MENU_MODE.static,
-  };
-
-  toggleMenu = ({ currentTarget }) => {
-    this.setState({
-      menu: currentTarget.checked ? MENU_MODE.static : MENU_MODE.dynamic,
-    });
   };
 
   render() {
@@ -38,44 +46,11 @@ export default class App extends Component {
     return (
       <ScrollingProvider scrollBehavior="smooth">
         {menu === MENU_MODE.static ? <StaticMenu /> : <DynamicMenu />}
-        <MenuTypeContainer>
-          <Toggle
-            id="menu-type"
-            defaultChecked={menu === MENU_MODE.static}
-            onChange={this.toggleMenu}
-          />
-          <label htmlFor="menu-type" style={{ marginLeft: '10px' }}>
-            {`Menu type: ${menu}`}
-          </label>
-        </MenuTypeContainer>
-        <Section id="home">
-          <SectionContainer>
-            <span role="img" aria-label="home">
-              🏠
-            </span>
-          </SectionContainer>
-        </Section>
-        <Section id="about">
-          <SectionContainer background="accent2">
-            <span role="img" aria-label="hands up">
-              🙋‍♂️
-            </span>
-          </SectionContainer>
-        </Section>
-        <Section id="projects">
-          <SectionContainer background="accent3">
-            <span role="img" aria-label="computer">
-              💻
-            </span>
-          </SectionContainer>
-        </Section>
-        <Section id="contact">
-          <SectionContainer>
-            <span role="img" aria-label="letter">
-              💌
-            </span>
-          </SectionContainer>
-        </Section>
+        <MenuToggle
+          menu={menu}
+          onChange={selected => this.setState({ menu: selected })}
+        />
+        <Sections />
       </ScrollingProvider>
     );
   }
