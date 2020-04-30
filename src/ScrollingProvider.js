@@ -59,7 +59,6 @@ export default class ScrollingProvider extends React.Component {
     this.setState({ selected: selected.key });
   };
 
-  // eslint-disable-next-line
   debounceScroll = debounce(this.handleScroll, this.props.debounceDelay || 50);
 
   registerRef = id => {
@@ -71,7 +70,7 @@ export default class ScrollingProvider extends React.Component {
   scrollTo = section => {
     const { scrollBehavior: behavior, offset } = this.props;
     const sectionRef = this.refList[section];
-    if (!sectionRef) return console.warn('Section ID not recognized!');
+    if (!sectionRef) return console.warn('Section ID not recognized!'); // eslint-disable-line
 
     const top = sectionRef.current.offsetTop + offset;
 

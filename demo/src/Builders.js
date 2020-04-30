@@ -40,3 +40,14 @@ export const SectionContainer = styled.section`
   position: 'relative';
   background: ${props => props.theme[props.background || 'background']};
 `;
+
+export const Footer = styled.div`
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  bottom: 0;
+  justify-content: space-between;
+  align-items: baseline;
+  width: calc(100% - 20px);
+  margin: 10px;
+`;
