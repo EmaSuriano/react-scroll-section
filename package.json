@@ -17,8 +17,7 @@
     "lint": "eslint ./src ./demo ./cypress",
     "test": "cypress run",
     "test:open": "cypress open",
-    "test:ci": "start-server-and-test 3000",
-    "build:demo": "nwb build-react-app demo/src public"
+    "test:ci": "start-server-and-test 3000"
   },
   "dependencies": {
     "debounce": "^1.2.0",

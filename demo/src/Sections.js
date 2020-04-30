@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 import { Section } from '../../src';
-import { SectionContainer } from './Builders';
+import { SectionContainer, Logo } from './Builders';
 
 const Sections = () => (
   <Fragment>
     <Section id="home">
       <SectionContainer>
         <p align="center">
-          <img src="./docs/logo.svg" alt="React Scroll Section logo" />
+          <Logo />
         </p>
         <h1>A declarative solution to vertically navigate your React App</h1>
       </SectionContainer>
