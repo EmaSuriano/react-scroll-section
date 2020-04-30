@@ -26,7 +26,7 @@ const ModeToggle = ({ menu, onChange }) => (
       }
     />
     <label htmlFor="menu-type" style={{ marginLeft: '10px' }}>
-      Menu type: <b>{menu}</b>
+      Menu: <b>{menu}</b>
     </label>
   </Container>
 );

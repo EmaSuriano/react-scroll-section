@@ -11,14 +11,14 @@
     "umd"
   ],
   "scripts": {
-    "build": "nwb build-react-component",
     "start": "nwb serve-react-demo",
+    "build": "nwb build-react-component",
+    "prepublish": "yarn build",
     "lint": "eslint ./src ./demo ./cypress",
     "test": "cypress run",
     "test:open": "cypress open",
     "test:ci": "start-server-and-test 3000",
-    "docs:dev": "docz dev",
-    "docs:build": "docz build"
+    "build:demo": "nwb build-react-app demo/src public"
   },
   "dependencies": {
     "debounce": "^1.2.0",
@@ -29,16 +29,13 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "coveralls": "^3.1.0",
     "cypress": "^4.5.0",
-    "docz": "^0.12.9",
     "eslint": "^5.7.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-react": "^7.11.1",
-    "gh-pages": "^2.0.1",
     "nwb": "0.23.x",
     "react": "^16.13.1",
     "react-dom": "^16.6.0",
