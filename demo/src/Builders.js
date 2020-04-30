@@ -35,10 +35,17 @@ export const SectionContainer = styled.section`
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  font-size: 4em;
   scroll-behavior: smooth;
   position: 'relative';
   background: ${props => props.theme[props.background || 'background']};
+
+  & h1 {
+    font-size: 2em;
+  }
+
+  & span[role='img'] {
+    font-size: 4em;
+  }
 `;
 
 export const Footer = styled.div`

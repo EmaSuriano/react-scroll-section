@@ -6,9 +6,10 @@ const Sections = () => (
   <Fragment>
     <Section id="home">
       <SectionContainer>
-        <span role="img" aria-label="home">
-          🏠
-        </span>
+        <p align="center">
+          <img src="./docs/logo.svg" alt="React Scroll Section logo" />
+        </p>
+        <h1>A declarative solution to vertically navigate your React App</h1>
       </SectionContainer>
     </Section>
     <Section id="about">

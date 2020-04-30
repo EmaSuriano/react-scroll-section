@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import GithubCorner from 'react-github-corner';
 import App from './App';
+import theme from './theme';
 import 'react-toggle/style.css';
 
 const GlobalStyle = createGlobalStyle`
@@ -15,14 +16,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Cabin', sans-serif;
   }
 `;
-
-const theme = {
-  background: '#F5F4E4',
-  text: '#333',
-  accent1: '#F4BC7C',
-  accent2: '#F27B9B',
-  accent3: '#00D3A4',
-};
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
