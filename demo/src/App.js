@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Toggle from 'react-toggle';
 import styled from 'styled-components';
 import { ScrollingProvider, Section } from '../../src';
-import SectionContainer from './SectionContainer';
+import { SectionContainer } from './Builders';
 import StaticMenu from './StaticMenu';
 import DynamicMenu from './DynamicMenu';
 
@@ -12,43 +12,69 @@ const MenuTypeContainer = styled.div`
   position: fixed;
   display: flex;
   bottom: 0;
+
   align-items: center;
   margin: 10px;
 `;
+
+const MENU_MODE = {
+  static: 'Static',
+  dynamic: 'Dynamic',
+};
+
 export default class App extends Component {
   state = {
-    menu: 'static',
+    menu: MENU_MODE.static,
   };
 
-  toggleMenu = () => {
-    const { menu } = this.state;
-    const newMenu = menu === 'static' ? 'dynamic' : 'static';
-    this.setState({ menu: newMenu });
+  toggleMenu = ({ currentTarget }) => {
+    this.setState({
+      menu: currentTarget.checked ? MENU_MODE.static : MENU_MODE.dynamic,
+    });
   };
 
   render() {
     const { menu } = this.state;
     return (
       <ScrollingProvider scrollBehavior="smooth">
-        {menu === 'static' ? <StaticMenu /> : <DynamicMenu />}
+        {menu === MENU_MODE.static ? <StaticMenu /> : <DynamicMenu />}
         <MenuTypeContainer>
-          <Toggle id="menu-type" onChange={this.toggleMenu} />
-          <label
-            htmlFor="menu-type"
-            style={{ marginLeft: '10px' }}
-          >{`Menu type: ${menu}`}</label>
+          <Toggle
+            id="menu-type"
+            defaultChecked={menu === MENU_MODE.static}
+            onChange={this.toggleMenu}
+          />
+          <label htmlFor="menu-type" style={{ marginLeft: '10px' }}>
+            {`Menu type: ${menu}`}
+          </label>
         </MenuTypeContainer>
         <Section id="home">
-          <SectionContainer background="lightblue">🏠</SectionContainer>
+          <SectionContainer>
+            <span role="img" aria-label="home">
+              🏠
+            </span>
+          </SectionContainer>
         </Section>
         <Section id="about">
-          <SectionContainer background="orange">🙋‍♂️</SectionContainer>
+          <SectionContainer background="accent2">
+            <span role="img" aria-label="hands up">
+              🙋‍♂️
+            </span>
+          </SectionContainer>
         </Section>
         <Section id="projects">
-          <SectionContainer background="orange">💻</SectionContainer>
+          <SectionContainer background="accent3">
+            <span role="img" aria-label="computer">
+              💻
+            </span>
+          </SectionContainer>
         </Section>
         <Section id="contact">
-          <SectionContainer background="orange">💌</SectionContainer>
+          <SectionContainer>
+            <span role="img" aria-label="letter">
+              💌
+            </span>
+          </SectionContainer>
         </Section>
       </ScrollingProvider>
     );

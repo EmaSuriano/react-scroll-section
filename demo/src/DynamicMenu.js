@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Item } from './Menu';
+import { Menu, Item } from './Builders';
 import { SectionLinks } from '../../src';
 
 const DynamicMenu = () => (

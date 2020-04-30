@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Item } from './Menu';
+import { Menu, Item } from './Builders';
 import { SectionLink } from '../../src';
 
 const MenuSection = ({ section, children }) => (
@@ -14,10 +14,10 @@ const MenuSection = ({ section, children }) => (
 
 const StaticMenu = () => (
   <Menu>
-    <MenuSection section="home">HOME</MenuSection>
-    <MenuSection section="about">ABOUT</MenuSection>
-    <MenuSection section="projects">PROJECTS</MenuSection>
-    <MenuSection section="contact">CONTACT</MenuSection>
+    <MenuSection section="home">LANDING</MenuSection>
+    <MenuSection section="about">ABOUT ME</MenuSection>
+    <MenuSection section="projects">MY PROJECTS</MenuSection>
+    <MenuSection section="contact">CONTACT ME!</MenuSection>
   </Menu>
 );
 

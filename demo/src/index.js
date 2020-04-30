@@ -2,7 +2,7 @@
 
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import GithubCorner from 'react-github-corner';
 import App from './App';
 import 'react-toggle/style.css';
@@ -10,21 +10,31 @@ import 'react-toggle/style.css';
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
-    background: #fafafa;
-    color: #a2d5f2;
+    background: ${props => props.theme.background};
+    color: ${props => props.theme.text};
     font-family: 'Cabin', sans-serif;
   }
 `;
 
+const theme = {
+  background: '#F5F4E4',
+  text: '#333',
+  accent1: '#F4BC7C',
+  accent2: '#F27B9B',
+  accent3: '#00D3A4',
+};
+
 ReactDOM.render(
-  <Fragment>
-    <GlobalStyle />
-    <App />
-    <GithubCorner
-      bannerColor="#a2d5f2"
-      octoColor="#fafafa"
-      href="https://github.com/EmaSuriano/react-scroll-section"
-    />
-  </Fragment>,
+  <ThemeProvider theme={theme}>
+    <Fragment>
+      <GlobalStyle />
+      <App />
+      <GithubCorner
+        bannerColor={theme.background}
+        octoColor={theme.accent1}
+        href="https://github.com/EmaSuriano/react-scroll-section"
+      />
+    </Fragment>
+  </ThemeProvider>,
   document.querySelector('#demo'),
 );
