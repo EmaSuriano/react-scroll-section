@@ -1,5 +1,3 @@
-/* eslint import/no-extraneous-dependencies: 0 */
-
 import React, { Component } from 'react';
 import { ScrollingProvider } from '../../src';
 import { DynamicMenu, StaticMenu } from './Menu';
