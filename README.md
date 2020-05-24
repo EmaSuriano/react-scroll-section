@@ -10,7 +10,7 @@
 
 <h3 align="center">A declarative solution to vertically navigate your React App</h3>
 
-## Live demo ✨
+## [Live demo ✨](https://react-scroll-section.netlify.app/)
 
 ## Why you should use it? 🤔
 
