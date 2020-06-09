@@ -56,7 +56,8 @@ export default class ScrollingProvider extends React.Component {
       },
     );
 
-    this.setState({ selected: selected.key });
+    if (this.state.selected !== selected.key)
+      this.setState({ selected: selected.key });
   };
 
   debounceScroll = debounce(this.handleScroll, this.props.debounceDelay || 50);
@@ -92,6 +93,7 @@ export default class ScrollingProvider extends React.Component {
       refList: this.refList,
       selected,
     };
+
     return <Provider value={value}>{children}</Provider>;
   }
 }

@@ -1,15 +1,5 @@
 import React from 'react';
 
-const { Consumer, Provider } = React.createContext();
+export const ScrollContext = React.createContext();
 
-const withScrollingConsumer = (Component) => {
-  const Wrapper = (props) => (
-    <Consumer>{(data) => <Component {...data} {...props} />}</Consumer>
-  );
-
-  Wrapper.displayName = `withScrollingConsumer(${Component.displayName})`;
-
-  return Wrapper;
-};
-
-export { Consumer, Provider, withScrollingConsumer };
+export const { Consumer, Provider } = ScrollContext;

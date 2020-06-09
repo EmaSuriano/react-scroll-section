@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useMemo, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Consumer } from './scrollContext';
+import { ScrollContext } from './scrollContext';
 
-const Section = ({ id, children, ...rest }) => (
-  <Consumer>
-    {({ registerRef }) => (
-      <section ref={registerRef(id)} id={id} {...rest}>
-        {children}
-      </section>
-    )}
-  </Consumer>
-);
+const Section = ({ id, children, ...rest }) => {
+  const { registerRef } = useContext(ScrollContext);
+  const ref = useMemo(() => registerRef(id), [id]);
+
+  return (
+    <section ref={ref} id={id} {...rest}>
+      {children}
+    </section>
+  );
+};
 
 Section.propTypes = {
   /** Section ID */
