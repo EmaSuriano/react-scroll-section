@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { Menu, Item } from './Builders';
 import { useScrollSection, useScrollSections } from '../../src';
 

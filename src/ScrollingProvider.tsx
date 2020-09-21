@@ -10,7 +10,7 @@ type Props = {
   children: ReactNode;
 };
 
-let REFS: RefsRegister = {};
+const REFS: RefsRegister = {};
 smoothscroll.polyfill();
 
 const ScrollingProvider = ({
