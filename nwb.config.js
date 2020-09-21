@@ -7,20 +7,12 @@ module.exports = {
   },
   webpack: {
     config: (config) => {
-      if (config.mode === 'development') {
-        config.entry = './demo/src/index';
-      } else {
-        config.entry = './src/index';
-      }
+      config.entry = {
+        demo: ['./demo/src/index.tsx'],
+      };
+      config.resolve.extensions = ['.ts', '.tsx', '.js', '.jsx'];
+      config.module.rules.push({ test: /\.(tsx|ts)$/, loader: 'ts-loader' });
       return config;
-    },
-    extra: {
-      resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx'],
-      },
-      module: {
-        rules: [{ test: /\.(tsx|ts)$/, loader: 'ts-loader' }],
-      },
     },
   },
 };

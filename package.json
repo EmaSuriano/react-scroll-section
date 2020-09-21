@@ -9,8 +9,10 @@
   "scripts": {
     "start": "nwb serve-react-demo",
     "clean": "nwb clean-module && nwb clean-demo",
-    "build:demo": "nwb build-demo",
+    "build:demo": "yarn build && nwb build-demo",
+    "prebuild": "yarn clean",
     "build": "tsc",
+    "prepublish": "yarn build",
     "lint": "yarn eslint . --ext .ts,.tsx",
     "test": "cypress run",
     "test:open": "cypress open",
