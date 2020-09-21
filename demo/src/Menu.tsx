@@ -16,27 +16,29 @@ export const DynamicMenu = () => {
   );
 };
 
-const MenuSection = ({
-  section,
-  children,
-}: {
-  section: string;
-  children: ReactNode;
-}) => {
-  const { onClick, selected } = useScrollSection(section);
+export const StaticMenu = () => {
+  const homeSection = useScrollSection('home');
+  const aboutSection = useScrollSection('about');
+  const projectsSection = useScrollSection('projects');
+  const contactSection = useScrollSection('contact');
 
   return (
-    <Item onClick={onClick} selected={selected}>
-      {children}
-    </Item>
+    <Menu>
+      <Item onClick={homeSection.onClick} selected={homeSection.selected}>
+        LANDING
+      </Item>
+      <Item onClick={aboutSection.onClick} selected={aboutSection.selected}>
+        ABOUT ME
+      </Item>
+      <Item
+        onClick={projectsSection.onClick}
+        selected={projectsSection.selected}
+      >
+        MY PROJECTS
+      </Item>
+      <Item onClick={contactSection.onClick} selected={contactSection.selected}>
+        CONTACT ME!
+      </Item>
+    </Menu>
   );
 };
-
-export const StaticMenu = () => (
-  <Menu>
-    <MenuSection section="home">LANDING</MenuSection>
-    <MenuSection section="about">ABOUT ME</MenuSection>
-    <MenuSection section="projects">MY PROJECTS</MenuSection>
-    <MenuSection section="contact">CONTACT ME!</MenuSection>
-  </Menu>
-);
