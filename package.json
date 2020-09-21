@@ -3,17 +3,13 @@
   "version": "3.0.0",
   "description": "React library to provide a declarative scroll to between sections",
   "main": "lib/index.js",
-  "module": "es/index.js",
   "files": [
-    "css",
-    "es",
-    "lib",
-    "umd"
+    "lib"
   ],
   "scripts": {
     "start": "nwb serve-react-demo",
     "clean": "nwb clean-module && nwb clean-demo",
-    "build": "nwb build-react-component",
+    "build": "tsc",
     "lint": "yarn eslint . --ext .ts,.tsx",
     "test": "cypress run",
     "test:open": "cypress open",

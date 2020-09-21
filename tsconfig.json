@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "module": "esnext",
+    "baseUrl": "src",
     "target": "es5",
-    "lib": ["es6", "dom"],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "sourceMap": true,
     "jsx": "react",
     "moduleResolution": "node",
@@ -14,6 +15,5 @@
     "skipLibCheck": true,
     "types": []
   },
-  "include": ["src/**/*", "demo/src/**/*"],
-  "exclude": ["node_modules", "lib", "es"]
+  "include": ["src/**/*"]
 }
