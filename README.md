@@ -32,6 +32,7 @@ Just React! Using the following API:
 
 - Context: using the of `<Consumer />` and `<Provider />`.
 - Ref: new `createRef` API
+- Hooks: `useScrollSection` and `useScrollSections` to interact with the registered sections.
 
 ## Installation
 
@@ -49,8 +50,8 @@ The library provides the following components:
 
 - `ScrollingProvider`: responsible to link `Section` and `SectionLink` and know which `Section` is selected.
 - `Section`: renders a `<section />` tag that receives an ID and register itself in `ScrollingProvider`.
-- `SectionLink`: giving a `Section` ID will perform the navigation after clicking on it. This is the best approach when you know the amount of sections your application has.
-- `SectionLinks`: provides all the `Section` references registered inside the application. Useful when your `Sections` are dynamic.
+- `useScrollSection`: React Hook given the `id` of the section returns if the section is `selected` and a callback to scroll to it.
+- `useScrollSection`: returns an array of all the `sections` with `id`, `selected` and `scrollTo`.
 
 ## Examples
 
@@ -58,28 +59,33 @@ The library provides the following components:
 
 ```javascript
 import React from 'react';
-import { ScrollingProvider, SectionLink, Section } from 'react-scroll-section';
+import {
+  ScrollingProvider,
+  useScrollSection,
+  Section,
+} from 'react-scroll-section';
+
+const StaticMenu = () => {
+  const homeSection = useScrollSection('home');
+  const aboutSection = useScrollSection('about');
+
+  return (
+    <ul>
+      <li onClick={homeSection.onClick} selected={homeSection.selected}>
+        Home
+      </li>
+      <li onClick={aboutSection.onClick} selected={aboutSection.selected}>
+        About
+      </li>
+    </ul>
+  );
+};
 
 const App = () => (
   <ScrollingProvider>
-    <div>
-      <SectionLink section="home">
-        {({ onClick, isSelected }) => (
-          <Item onClick={onClick} selected={isSelected}>
-            Home
-          </Item>
-        )}
-      </SectionLink>
-      <SectionLink section="about">
-        {({ onClick, isSelected }) => (
-          <Item onClick={onClick} selected={isSelected}>
-            About
-          </Item>
-        )}
-      </SectionLink>
-    </div>
-    <Section id="home">Home section</Section>
-    <Section id="about">About section</Section>
+    <StaticMenu />
+    <Section id="home">MY HOME</Section>
+    <Section id="about">ABOUT ME</Section>
   </ScrollingProvider>
 );
 ```
@@ -88,21 +94,29 @@ const App = () => (
 
 ```javascript
 import React from 'react';
-import { ScrollingProvider, SectionLink, Section } from 'react-scroll-section';
+import {
+  ScrollingProvider,
+  useScrollSections,
+  Section,
+} from 'react-scroll-section';
+
+export const DynamicMenu = () => {
+  const sections = useScrollSections();
+
+  return (
+    <ul>
+      {sections.map(({ id, onClick, selected }) => (
+        <li key={id} onClick={onClick} selected={selected}>
+          {id.toUpperCase()}
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 const App = () => (
   <ScrollingProvider>
-    <div>
-      <SectionLinks>
-        {({ allLinks }) =>
-          Object.entries(allLinks).map(([key, link]) => (
-            <Item key={key} onClick={link.onClick} selected={link.isSelected}>
-              {key.toUpperCase()}
-            </Item>
-          ))
-        }
-      </SectionLinks>
-    </div>
+    <DynamicMenu />
     <Section id="home">Home section</Section>
     <Section id="about">About section</Section>
   </ScrollingProvider>
@@ -129,32 +143,6 @@ const App = () => (
 | `children` | `ReactNode` | false    | null    | Section content |
 | `id`       | `string`    | true     | -       | Section ID      |
 
-### SectionLink
-
-| Property   | Type       | Required | Default | Description |
-| ---------- | ---------- | -------- | ------- | ----------- |
-| `section`  | `string`   | true     | -       | Section ID  |
-| `children` | `function` | true     | -       | Render prop |
-
-#### Render prop params
-
-| Property     | Type       | Description                          |
-| ------------ | ---------- | ------------------------------------ |
-| `onClick`    | `function` | function to scroll to that `Section` |
-| `isSelected` | `boolean`  | checks if the `Section` is `active`  |
-
-### SectionLinks
-
-| Property   | Type       | Required | Default | Description |
-| ---------- | ---------- | -------- | ------- | ----------- |
-| `children` | `function` | true     | -       | Render prop |
-
-#### Render prop params
-
-| Property   | Type     | Description                                                                                            |
-| ---------- | -------- | ------------------------------------------------------------------------------------------------------ |
-| `allLinks` | `object` | Object with the information of all the links registered. The structure is the same as in `SectionLink` |
-
 ## Contributing
 
 ### Setup project
@@ -172,8 +160,7 @@ const App = () => (
 
 ### Building
 
-- `yarn build`: builds the library, this is necesary to be published to npm.
-- `yarn build:demo`: builds the demo project to be deployed at the home page.
+- `yarn build`: builds the library, this is necessary to be published to npm.
 
 ## Contribute ❤️
 

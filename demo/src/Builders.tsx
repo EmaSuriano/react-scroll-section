@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { DefaultTheme } from 'styled-components';
 
 export const Menu = styled.ul`
   position: fixed;
@@ -12,7 +12,7 @@ export const Menu = styled.ul`
   margin: 0;
 `;
 
-export const Item = styled.li`
+export const Item = styled.li<{ selected: boolean }>`
   display: inline-block;
   text-align: center;
   cursor: pointer;
@@ -27,7 +27,9 @@ export const Item = styled.li`
     ${(props) => (props.selected ? props.theme.accent1 : 'transparent')};
 `;
 
-export const SectionContainer = styled.section`
+export const SectionContainer = styled.section<{
+  background?: keyof DefaultTheme;
+}>`
   min-height: 100vh;
   min-width: 320px;
   display: flex;
