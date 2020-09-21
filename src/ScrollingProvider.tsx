@@ -3,14 +3,15 @@ import { debounce } from './utils';
 import { Provider } from './context';
 import smoothscroll from 'smoothscroll-polyfill';
 
-smoothscroll.polyfill();
-
 type Props = {
   debounceDelay?: number;
   scrollBehavior?: 'auto' | 'smooth';
   offset?: number;
   children: ReactNode;
 };
+
+let REFS: RefsRegister = {};
+smoothscroll.polyfill();
 
 const ScrollingProvider = ({
   debounceDelay = 50,
@@ -19,7 +20,6 @@ const ScrollingProvider = ({
   children,
 }: Props) => {
   const [selected, setSelected] = useState('');
-  const [refs, setRefs] = useState<RefsRegister>({});
 
   useEffect(() => {
     document.addEventListener('scroll', debounceScroll, true);
@@ -30,9 +30,9 @@ const ScrollingProvider = ({
   }, []);
 
   const handleScroll = () => {
-    const selectedSection = Object.keys(refs).reduce(
+    const selectedSection = Object.keys(REFS).reduce(
       (acc, id) => {
-        const { top } = refs[id].current.getBoundingClientRect();
+        const { top } = REFS[id].current.getBoundingClientRect();
         const differenceFromTop = Math.abs(top);
 
         if (differenceFromTop >= acc.differenceFromTop) return acc;
@@ -55,12 +55,13 @@ const ScrollingProvider = ({
 
   const registerRef = (id: string) => {
     const ref = React.createRef<HTMLElement>();
-    setRefs((rest) => ({ ...rest, [id]: ref }));
+    REFS[id] = ref;
     return ref;
   };
 
   const scrollTo = (section: string) => {
-    const sectionRef = refs[section];
+    const sectionRef = REFS[section];
+
     if (!sectionRef) return console.warn('Section ID not recognized!'); // eslint-disable-line
 
     const top = sectionRef.current.offsetTop + offset;
@@ -75,10 +76,10 @@ const ScrollingProvider = ({
     () => ({
       registerRef,
       scrollTo,
-      refs,
+      refs: REFS,
       selected,
     }),
-    [selected, refs],
+    [selected, REFS],
   );
 
   return <Provider value={value}>{children}</Provider>;
