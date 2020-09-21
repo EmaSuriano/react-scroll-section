@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "outDir": "lib",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": []
+  },
+  "include": ["src/**/*", "demo/src/**/*"],
+  "exclude": ["node_modules", "lib", "es"]
+}

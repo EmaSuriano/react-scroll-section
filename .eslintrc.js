@@ -1,22 +1,15 @@
 module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
   extends: [
     'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:prettier/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+    'prettier/@typescript-eslint',
   ],
-  plugins: ['react', 'prettier'],
   rules: {
-    'react/jsx-filename-extension': 'off',
-  },
-  parser: 'babel-eslint',
-  env: {
-    browser: true,
-    node: true,
-  },
-  settings: {
-    react: {
-      pragma: 'React',
-      version: 'detect',
-    },
+    '@typescript-eslint/explicit-module-boundary-types': 0,
+    '@typescript-eslint/no-empty-function': 0,
   },
 };

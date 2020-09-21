@@ -21,8 +21,8 @@ ReactDOM.render(
       <GlobalStyle />
       <App />
       <GithubCorner
-        bannerColor={theme.background}
-        octoColor={theme.accent1}
+        bannerColor={theme.accent1}
+        octoColor={theme.background}
         href="https://github.com/EmaSuriano/react-scroll-section"
       />
     </Fragment>

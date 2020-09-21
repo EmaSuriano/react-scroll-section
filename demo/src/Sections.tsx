@@ -6,7 +6,7 @@ const Sections = () => (
   <Fragment>
     <Section id="home">
       <SectionContainer>
-        <p align="center">
+        <p>
           <Logo />
         </p>
         <h1>A declarative solution to vertically navigate your React App</h1>
