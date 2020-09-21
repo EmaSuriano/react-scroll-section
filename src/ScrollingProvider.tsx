@@ -1,6 +1,9 @@
 import React, { ReactNode, useEffect, useMemo, useState } from 'react';
 import { debounce } from './utils';
 import { Provider } from './context';
+import smoothscroll from 'smoothscroll-polyfill';
+
+smoothscroll.polyfill();
 
 type Props = {
   debounceDelay?: number;

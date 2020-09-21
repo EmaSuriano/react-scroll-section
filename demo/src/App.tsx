@@ -9,7 +9,7 @@ const App = () => {
   const [menu, setMenu] = useState<Menu>('static');
 
   return (
-    <ScrollingProvider scrollBehavior="smooth">
+    <ScrollingProvider>
       {menu === 'static' ? <StaticMenu /> : <DynamicMenu />}
       <Sections />
       <Footer>
