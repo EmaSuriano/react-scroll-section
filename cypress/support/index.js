@@ -10,12 +10,6 @@ Cypress.Commands.add('clickOnHeader', (label) => {
   cy.wait(500);
 });
 
-Cypress.Commands.add('clickOnHeader', (label) => {
-  cy.get('li').contains(label).click();
-
-  cy.wait(500);
-});
-
 Cypress.Commands.add(
   'inViewport',
   { prevSubject: true },
