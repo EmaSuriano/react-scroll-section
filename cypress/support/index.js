@@ -7,7 +7,7 @@ Cypress.Commands.add('checkHeader', (labelList) => {
 Cypress.Commands.add('clickOnHeader', (label) => {
   cy.get('li').contains(label).click();
 
-  cy.wait(500);
+  cy.wait(1000);
 });
 
 Cypress.Commands.add(
@@ -16,6 +16,7 @@ Cypress.Commands.add(
   (subject, visible = true) => {
     const scrollPosition = Cypress.$(cy.state('window')).height() - 1;
     const { top, bottom } = subject[0].getBoundingClientRect();
+    console.log(subject[0].getBoundingClientRect());
     if (visible) {
       expect(scrollPosition).to.be.within(top, bottom);
     } else {
