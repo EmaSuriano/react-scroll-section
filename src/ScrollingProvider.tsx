@@ -11,7 +11,9 @@ type Props = {
 };
 
 const REFS: RefsRegister = {};
-smoothscroll.polyfill();
+if (typeof window !== 'undefined') {
+  smoothscroll.polyfill();
+}
 
 const ScrollingProvider = ({
   debounceDelay = 50,
