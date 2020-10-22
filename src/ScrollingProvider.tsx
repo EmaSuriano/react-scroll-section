@@ -10,7 +10,14 @@ type Props = {
   children: ReactNode;
 };
 
+type RegisterRefsArgs = {
+  id: string;
+  meta: unknown;
+}
+
 const REFS: RefsRegister = {};
+const META: Meta = {};
+
 if (typeof window !== 'undefined') {
   smoothscroll.polyfill();
 }
@@ -55,9 +62,10 @@ const ScrollingProvider = ({
 
   const debounceScroll = debounce(handleScroll, debounceDelay);
 
-  const registerRef = (id: string) => {
+  const registerRef = ({id, meta}: {id: string, meta: unknown}) => {
     const ref = React.createRef<HTMLElement>();
     REFS[id] = ref;
+    META[id] = meta;
     return ref;
   };
 
@@ -79,6 +87,7 @@ const ScrollingProvider = ({
       registerRef,
       scrollTo,
       refs: REFS,
+      meta: META,
       selected,
     }),
     [selected, REFS],

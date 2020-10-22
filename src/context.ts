@@ -3,6 +3,7 @@ import React from 'react';
 const DEFAULT_CONTEXT = {
   selected: '',
   refs: {},
+  meta: {},
   scrollTo: () => {},
   registerRef: () => null,
 };
