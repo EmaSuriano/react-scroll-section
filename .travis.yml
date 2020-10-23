@@ -15,3 +15,4 @@ script:
   - yarn lint
   - yarn test:ci
   - yarn build
+  - yarn build:demo

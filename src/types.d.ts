@@ -7,7 +7,7 @@ type Meta = {
 };
 
 type ScrollContextType = {
-  registerRef: ({id: string, meta: unknown}) => RefObject<HTMLElement> | null;
+  registerRef: ({ id: string, meta: unknown }) => RefObject<HTMLElement> | null;
   scrollTo: (section: string) => void;
   refs: RefsRegister;
   meta: Meta;
