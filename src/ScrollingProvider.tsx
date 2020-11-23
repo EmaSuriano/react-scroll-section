@@ -41,6 +41,11 @@ const ScrollingProvider = ({
   const handleScroll = () => {
     const selectedSection = Object.keys(REFS).reduce(
       (acc, id) => {
+        if (!REFS[id].current) return {
+          id: id,
+          differenceFromTop: 0
+        }
+        
         const { top } = REFS[id].current.getBoundingClientRect();
         const differenceFromTop = Math.abs(top);
 
