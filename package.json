@@ -22,7 +22,7 @@
     "react": "16.x"
   },
   "devDependencies": {
-    "@types/react": "^16.4.6",
+    "@types/react": "^17.0.0",
     "@types/react-dom": "^16.0.6",
     "@types/react-toggle": "^4.0.2",
     "@types/smoothscroll-polyfill": "^0.3.1",
