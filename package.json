@@ -32,7 +32,7 @@
     "babel-eslint": "^10.0.1",
     "cypress": "^5.0.0",
     "eslint": "^7.9.0",
-    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-prettier": "^3.1.3",
