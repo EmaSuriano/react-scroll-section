@@ -1,6 +1,5 @@
 # react-scroll-section
 
-[![Build Status](https://travis-ci.com/EmaSuriano/react-scroll-section.svg?branch=master)](https://travis-ci.com/EmaSuriano/react-scroll-section)
 [![npm package](https://img.shields.io/npm/v/react-scroll-section.svg)](https://www.npmjs.org/package/react-scroll-section)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/8e8c9915-5b0a-4cde-83e7-13747fb01f30/deploy-status)](https://app.netlify.com/sites/react-scroll-section/deploys)
 
