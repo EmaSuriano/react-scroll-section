@@ -1,6 +1,12 @@
-import React, { ReactNode, useEffect, useMemo, useState } from 'react';
+import React, {
+  ReactNode,
+  createRef,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { debounce } from './utils';
-import { Provider } from './context';
+import { Provider, RefsRegister, Meta } from './context';
 import smoothscroll from 'smoothscroll-polyfill';
 
 type Props = {
@@ -10,11 +16,6 @@ type Props = {
   children: ReactNode;
 };
 
-type RegisterRefsArgs = {
-  id: string;
-  meta: unknown;
-}
-
 const REFS: RefsRegister = {};
 const META: Meta = {};
 
@@ -22,7 +23,7 @@ if (typeof window !== 'undefined') {
   smoothscroll.polyfill();
 }
 
-const ScrollingProvider = ({
+export const ScrollingProvider = ({
   debounceDelay = 50,
   scrollBehavior = 'smooth',
   offset = 0,
@@ -41,12 +42,15 @@ const ScrollingProvider = ({
   const handleScroll = () => {
     const selectedSection = Object.keys(REFS).reduce(
       (acc, id) => {
-        if (!REFS[id].current) return {
-          id: id,
-          differenceFromTop: 0
+        const sectionRef = REFS[id] && REFS[id].current;
+        if (!sectionRef) {
+          return {
+            id: id,
+            differenceFromTop: 0,
+          };
         }
-        
-        const { top } = REFS[id].current.getBoundingClientRect();
+
+        const { top } = sectionRef.getBoundingClientRect();
         const differenceFromTop = Math.abs(top);
 
         if (differenceFromTop >= acc.differenceFromTop) return acc;
@@ -67,22 +71,21 @@ const ScrollingProvider = ({
 
   const debounceScroll = debounce(handleScroll, debounceDelay);
 
-  const registerRef = ({id, meta}: {id: string, meta: unknown}) => {
-    const ref = React.createRef<HTMLElement>();
+  const registerRef = ({ id, meta }: { id: string; meta: unknown }) => {
+    const ref = createRef<HTMLElement>();
     REFS[id] = ref;
     META[id] = meta;
     return ref;
   };
 
   const scrollTo = (section: string) => {
-    const sectionRef = REFS[section];
+    const sectionRef = REFS[section] && REFS[section].current;
 
     if (!sectionRef) return console.warn('Section ID not recognized!'); // eslint-disable-line
 
-    const top = sectionRef.current.offsetTop + offset;
     setSelected(section);
     window.scrollTo({
-      top,
+      top: sectionRef.offsetTop + offset,
       behavior: scrollBehavior,
     });
   };
@@ -100,5 +103,3 @@ const ScrollingProvider = ({
 
   return <Provider value={value}>{children}</Provider>;
 };
-
-export default ScrollingProvider;
