@@ -1,6 +1,21 @@
-import React from 'react';
+import { createContext, RefObject } from 'react';
 
-const DEFAULT_CONTEXT = {
+export type RefsRegister = Record<string, RefObject<HTMLElement>>;
+
+export type Meta = Record<string, unknown>;
+
+export type ScrollContextType = {
+  registerRef: (args: {
+    id: string;
+    meta: unknown;
+  }) => RefObject<HTMLElement> | null;
+  scrollTo: (section: string) => void;
+  refs: RefsRegister;
+  meta: Meta;
+  selected: string;
+};
+
+const DEFAULT_CONTEXT: ScrollContextType = {
   selected: '',
   refs: {},
   meta: {},
@@ -8,8 +23,6 @@ const DEFAULT_CONTEXT = {
   registerRef: () => null,
 };
 
-export const ScrollContext = React.createContext<ScrollContextType>(
-  DEFAULT_CONTEXT,
-);
+export const ScrollContext = createContext(DEFAULT_CONTEXT);
 
 export const { Consumer, Provider } = ScrollContext;

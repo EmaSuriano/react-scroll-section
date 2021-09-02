@@ -7,7 +7,7 @@ type Props = {
   children: React.ReactNode;
 } & React.HTMLProps<HTMLButtonElement>;
 
-const Section = ({ id, children, meta, ...rest }: Props) => {
+export const Section = ({ id, children, meta, ...rest }: Props) => {
   const { registerRef } = useContext(ScrollContext);
   const ref = useMemo(() => registerRef({ id, meta }), [id]);
 
@@ -17,5 +17,3 @@ const Section = ({ id, children, meta, ...rest }: Props) => {
     </section>
   );
 };
-
-export default Section;
