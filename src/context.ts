@@ -9,6 +9,7 @@ export type ScrollContextType = {
     id: string;
     meta: unknown;
   }) => RefObject<HTMLElement> | null;
+  unregisterRef: (id: string) => void;
   scrollTo: (section: string) => void;
   refs: RefsRegister;
   meta: Meta;
@@ -21,6 +22,7 @@ const DEFAULT_CONTEXT: ScrollContextType = {
   meta: {},
   scrollTo: () => {},
   registerRef: () => null,
+  unregisterRef: () => {},
 };
 
 export const ScrollContext = createContext(DEFAULT_CONTEXT);
