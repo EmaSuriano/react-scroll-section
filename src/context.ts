@@ -1,4 +1,4 @@
-import { createContext, RefObject } from 'react';
+import { createContext, RefObject, useContext } from 'react';
 
 export type RefsRegister = Record<string, RefObject<HTMLElement>>;
 
@@ -24,5 +24,9 @@ const DEFAULT_CONTEXT: ScrollContextType = {
 };
 
 export const ScrollContext = createContext(DEFAULT_CONTEXT);
+
+export const useScrollContext = () => {
+  return useContext(ScrollContext);
+};
 
 export const { Consumer, Provider } = ScrollContext;
