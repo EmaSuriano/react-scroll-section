@@ -1,13 +1,13 @@
-import React, { useMemo, useContext } from 'react';
+import React, { HTMLProps, useMemo, useContext } from 'react';
 import { ScrollContext } from './context';
 
-type Props = {
+interface IProps extends HTMLProps<HTMLDivElement> {
   id: string;
   meta?: unknown;
   children: React.ReactNode;
-} & React.HTMLProps<HTMLButtonElement>;
+}
 
-export const Section = ({ id, children, meta, ...rest }: Props) => {
+export const Section = ({ id, children, meta, ...rest }: IProps) => {
   const { registerRef } = useContext(ScrollContext);
   const ref = useMemo(() => registerRef({ id, meta }), [id]);
 
