@@ -127,12 +127,12 @@ const App = () => (
 
 ### ScrollingProvider
 
-| Property         | Type                         | Required | Default  | Description                                               |
-| ---------------- | ---------------------------- | -------- | -------- | --------------------------------------------------------- |
-| `debounceDelay`  | `number`                     | false    | 50       | time to wait until the calculation of the current section |
-| `scrollBehavior` | [`string`][scroll-behaviour] | false    | "smooth" | scrolling style                                           |
-| `children`       | `ReactNode`                  | false    | null     | React component                                           |
-| `offset`         | `number`                     | false    | null     | Vertical offset the modifies the final scrolling position |
+| Property         | Type                         | Required | Default            | Description                                               |
+| ---------------- | ---------------------------- | -------- | ------------------ | --------------------------------------------------------- |
+| `debounceDelay`  | `number`                     | false    | 50                 | time to wait until the calculation of the current section |
+| `scrollBehavior` | [`string`][scroll-behaviour] | false    | 'auto' or 'smooth' | scrolling style                                           |
+| `children`       | `ReactNode`                  | true     | null               | React component                                           |
+| `offset`         | `number`                     | false    | 0                  | Vertical offset the modifies the final scrolling position |
 
 [scroll-behaviour]: https://developer.mozilla.org/de/docs/Web/CSS/scroll-behavior
 
@@ -140,7 +140,7 @@ const App = () => (
 
 | Property   | Type        | Required | Default | Description     |
 | ---------- | ----------- | -------- | ------- | --------------- |
-| `children` | `ReactNode` | false    | null    | Section content |
+| `children` | `ReactNode` | true     | null    | Section content |
 | `id`       | `string`    | true     | -       | Section ID      |
 
 ## Contributing
