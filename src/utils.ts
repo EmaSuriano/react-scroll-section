@@ -1,16 +1,44 @@
-export const debounce = <F extends (...args: unknown[]) => unknown>(
-  func: F,
-  waitFor: number,
-) => {
-  let timeout: ReturnType<typeof setTimeout> | null = null;
+export function throttle(this: any, func: Function, wait: number) {
+  let timeout: number | null = null;
+  let callbackArgs: IArguments | null = null;
+  const context = this;
 
-  const debounced = (...args: Parameters<F>) => {
-    if (timeout !== null) {
-      clearTimeout(timeout);
-      timeout = null;
-    }
-    timeout = setTimeout(() => func(...args), waitFor);
+  const later = () => {
+    func.apply(context, callbackArgs);
+    timeout = null;
   };
 
-  return debounced as (...args: Parameters<F>) => ReturnType<F>;
+  return function () {
+    if (!timeout) {
+      callbackArgs = arguments;
+      timeout = setTimeout(later, wait);
+    }
+  };
+}
+
+export const isWindowDefine = () => typeof window !== 'undefined';
+
+export const throttleEvent = function (
+  type: string,
+  name: string,
+  obj?: HTMLElement | Window | Document,
+) {
+  obj = obj || (isWindowDefine() ? window : undefined);
+
+  if (!Boolean(obj)) return;
+
+  let running = false;
+
+  let func = function () {
+    if (running) {
+      return;
+    }
+    running = true;
+    requestAnimationFrame(function () {
+      obj?.dispatchEvent(new CustomEvent(name));
+      running = false;
+    });
+  };
+
+  obj?.addEventListener(type, func);
 };

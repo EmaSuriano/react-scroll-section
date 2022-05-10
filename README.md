@@ -129,7 +129,7 @@ const App = () => (
 
 | Property         | Type                         | Required | Default  | Description                                               |
 | ---------------- | ---------------------------- | -------- | -------- | --------------------------------------------------------- |
-| `debounceDelay`  | `number`                     | false    | 50       | time to wait until the calculation of the current section |
+| `throttleDelay`  | `number`                     | false    | 200      | time to wait until the calculation of the current section |
 | `scrollBehavior` | [`string`][scroll-behaviour] | false    | "smooth" | scrolling style                                           |
 | `children`       | `ReactNode`                  | false    | null     | React component                                           |
 | `offset`         | `number`                     | false    | null     | Vertical offset the modifies the final scrolling position |
