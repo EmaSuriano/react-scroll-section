@@ -1,8 +1,7 @@
-import { useContext } from 'react';
-import { ScrollContext } from './context';
+import { useScrollContext } from './context';
 
 export const useScrollSection = (id: string) => {
-  const { scrollTo, selected: selectedSection } = useContext(ScrollContext);
+  const { scrollTo, selected: selectedSection } = useScrollContext();
   const onClick = () => scrollTo(id);
   const selected = selectedSection === id;
 
@@ -10,9 +9,12 @@ export const useScrollSection = (id: string) => {
 };
 
 export const useScrollSections = () => {
-  const { scrollTo, selected: selectedSection, refs, meta } = useContext(
-    ScrollContext,
-  );
+  const {
+    scrollTo,
+    selected: selectedSection,
+    refs,
+    meta,
+  } = useScrollContext();
 
   const sections = Object.keys(refs).map((id) => ({
     id,
