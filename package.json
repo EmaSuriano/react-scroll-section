@@ -46,7 +46,7 @@
     "react-toggle": "^4.0.2",
     "start-server-and-test": "^1.11.0",
     "styled-components": "^4.0.2",
-    "ts-loader": "^8.0.4",
+    "ts-loader": "^9.4.1",
     "typescript": "^4.0.3"
   },
   "author": "EmaSuriano <emanuel.suriano@gmail.com>",
