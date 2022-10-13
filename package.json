@@ -17,6 +17,7 @@
     "build:demo": "yarn build && yarn workspace demo build",
     "release": "yarn workspace react-scroll-section release",
     "test": "yarn workspace demo test",
+    "pretest:ci": "yarn build",
     "test:ci": "start-server-and-test http-get://localhost:3000"
   }
 }
