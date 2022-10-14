@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { ScrollingProvider, Section } from 'react-scroll-section';
 import ModeToggle, { MenuKind } from './ModeToggle';
-import './App.css';
 import { DynamicMenu, StaticMenu } from './Menu';
 import { Footer, Menu, SectionContainer } from './Builders';
 import logo from './logo.svg';
@@ -34,6 +33,14 @@ function App() {
         <SectionContainer background="accent3">
           <span role="img" aria-label="computer">
             💻
+          </span>
+        </SectionContainer>
+      </Section>
+
+      <Section id="contact">
+        <SectionContainer>
+          <span role="img" aria-label="letter">
+            💌
           </span>
         </SectionContainer>
       </Section>

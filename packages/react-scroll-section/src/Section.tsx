@@ -1,4 +1,4 @@
-import React, { useMemo, useContext } from 'react';
+import React, { useMemo, useContext, useEffect } from 'react';
 import { ScrollContext } from './context';
 
 type Props = {
@@ -8,8 +8,14 @@ type Props = {
 } & React.HTMLProps<HTMLButtonElement>;
 
 export const Section = ({ id, children, meta, ...rest }: Props) => {
-  const { registerRef } = useContext(ScrollContext);
+  const { registerRef, unregisterRef } = useContext(ScrollContext);
   const ref = useMemo(() => registerRef({ id, meta }), [id]);
+
+  useEffect(() => {
+    return function () {
+      unregisterRef(id);
+    };
+  }, []);
 
   return (
     <section {...rest} ref={ref} id={id}>

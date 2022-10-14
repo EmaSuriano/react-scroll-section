@@ -78,6 +78,11 @@ export const ScrollingProvider = ({
     return ref;
   };
 
+  const unregisterRef = (id: string) => {
+    delete REFS[id];
+    delete META[id];
+  };
+
   const scrollTo = (section: string) => {
     const sectionRef = REFS[section] && REFS[section].current;
 
@@ -93,6 +98,7 @@ export const ScrollingProvider = ({
   const value = useMemo(
     () => ({
       registerRef,
+      unregisterRef,
       scrollTo,
       refs: REFS,
       meta: META,
