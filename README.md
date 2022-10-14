@@ -143,28 +143,38 @@ const App = () => (
 | `children` | `ReactNode` | false    | null    | Section content |
 | `id`       | `string`    | true     | -       | Section ID      |
 
-## Contributing
+## Contributing 🧑‍💼
+
+I'm always open for suggestions and improvements, so don't hesitate to open an Issue or new Pull Request.
 
 ### Setup project
 
-- Running `yarn install` in the component's root directory will install everything you need for development.
+This project is using Yarn workspace, therefore check that you have Yarn as your package manager.
 
-### Demo Development Server
+```sh
+# Check if you have you Yarn install
+> yarn -v
+1.22.18
 
-- `yarn start`: starts the development server with the component's demo app at [http://localhost:3000](http://localhost:3000).
+# Install dependencies
+> yarn
+```
 
-### Testing
+### Commands
 
-- `yarn test`: executes Cypress and run test. Remember to execute `yarn start` in order to have a successful result.
-- `yarn test:open`: opens Cypress interface which allows you to execute test individually and preview the order execution of the tests.
+```sh
+# Builds library
+> yarn build
 
-### Building
+# Starts demo app locally
+> yarn start
 
-- `yarn build`: builds the library, this is necessary to be published to npm.
+# Run E2E tests
+> yarn test
 
-## Contribute ❤️
-
-I'm always open for suggestions and improvements, so don't hesitate to open an Issue or new Pull Request 😁
+# Build library + demo app
+> yarn build:demo
+```
 
 ## License 🔖
 
