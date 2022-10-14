@@ -6,7 +6,7 @@ module.exports = defineConfig({
     supportFile: 'cypress/support/index.js',
   },
   e2e: {
-    baseUrl: 'http://localhost:3000/',
+    baseUrl: 'http://localhost:5173/',
     specPattern: 'cypress/e2e/**/*.cy.js',
     supportFile: 'cypress/support/index.js',
     video: false,
