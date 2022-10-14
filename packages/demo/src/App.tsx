@@ -45,14 +45,6 @@ function App() {
         </SectionContainer>
       </Section>
 
-      <Section id="contact">
-        <SectionContainer>
-          <span role="img" aria-label="letter">
-            💌
-          </span>
-        </SectionContainer>
-      </Section>
-
       <Footer>
         <ModeToggle menu={menu} onChange={setMenu} />
         <a href="https://www.netlify.com">
