@@ -10,9 +10,12 @@ export const useScrollSection = (id: string) => {
 };
 
 export const useScrollSections = () => {
-  const { scrollTo, selected: selectedSection, refs, meta } = useContext(
-    ScrollContext,
-  );
+  const {
+    scrollTo,
+    selected: selectedSection,
+    refs,
+    meta,
+  } = useContext(ScrollContext);
 
   const sections = Object.keys(refs).map((id) => ({
     id,

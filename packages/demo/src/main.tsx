@@ -16,16 +16,16 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 ReactDOM.render(
-    <ThemeProvider theme={theme}>
-        <Fragment>
-            <GlobalStyle />
-            <App />
-            <GithubCorner
-                bannerColor={theme.accent1}
-                octoColor={theme.background}
-                href="https://github.com/EmaSuriano/react-scroll-section"
-            />
-        </Fragment>
-    </ThemeProvider>,
-    document.getElementById('root')
+  <ThemeProvider theme={theme}>
+    <Fragment>
+      <GlobalStyle />
+      <App />
+      <GithubCorner
+        bannerColor={theme.accent1}
+        octoColor={theme.background}
+        href="https://github.com/EmaSuriano/react-scroll-section"
+      />
+    </Fragment>
+  </ThemeProvider>,
+  document.getElementById('root'),
 );
