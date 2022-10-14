@@ -5,7 +5,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/8e8c9915-5b0a-4cde-83e7-13747fb01f30/deploy-status)](https://app.netlify.com/sites/react-scroll-section/deploys)
 
 <p align="center">
-  <img src="./docs/logo.svg" alt="React Scroll Section logo"/>
+  <img src="./packages/demo/src/logo.svg" alt="React Scroll Section logo"/>
 </p>
 
 <h3 align="center">A declarative solution to vertically navigate your React App</h3>

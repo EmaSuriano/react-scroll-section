@@ -1,66 +1,23 @@
 {
-  "name": "react-scroll-section",
-  "version": "0.0.0",
-  "description": "React library to provide a declarative scroll to between sections",
-  "main": "lib/index.js",
-  "files": [
-    "lib"
-  ],
-  "scripts": {
-    "start": "nwb serve-react-demo",
-    "clean": "nwb clean-module && nwb clean-demo",
-    "build:demo": "nwb build-demo",
-    "prebuild": "yarn clean",
-    "build": "tsc",
-    "prepublish": "yarn build",
-    "lint": "yarn eslint . --ext .ts,.tsx",
-    "release": "npx semantic-release",
-    "test": "cypress run",
-    "test:open": "cypress open",
-    "test:ci": "start-server-and-test 3000"
-  },
-  "peerDependencies": {
-    "react": "16.x"
+  "name": "react-scroll-section-monorepo",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
   },
   "devDependencies": {
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.9",
-    "@types/react-toggle": "^4.0.2",
-    "@types/smoothscroll-polyfill": "^0.3.1",
-    "@types/styled-components": "^5.1.3",
-    "@typescript-eslint/eslint-plugin": "^4.1.1",
-    "@typescript-eslint/parser": "^4.1.1",
-    "babel-eslint": "^10.0.1",
-    "cypress": "^9.3.1",
-    "eslint": "^7.9.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-cypress": "^2.10.3",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.11.1",
-    "nwb": "0.25.x",
-    "prettier": "^2.0.5",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-github-corner": "^2.3.0",
-    "react-toggle": "^4.0.2",
-    "start-server-and-test": "^1.11.0",
-    "styled-components": "^4.0.2",
-    "ts-loader": "^8.0.4",
-    "typescript": "^4.0.3"
+    "prettier": "2.5.1",
+    "pretty-quick": "3.1.3",
+    "start-server-and-test": "^1.14.0"
   },
-  "author": "EmaSuriano <emanuel.suriano@gmail.com>",
-  "homepage": "https://emasuriano.github.io/react-scroll-section/",
-  "license": "MIT",
-  "repository": "https://github.com/EmaSuriano/react-scroll-section",
-  "keywords": [
-    "react-component",
-    "scroll",
-    "scrolling",
-    "section",
-    "declarative"
-  ],
-  "dependencies": {
-    "smoothscroll-polyfill": "^0.4.4"
+  "scripts": {
+    "build": "yarn workspace react-scroll-section build",
+    "start": "yarn workspace demo dev",
+    "build:demo": "yarn build && yarn workspace demo build",
+    "release": "yarn workspace react-scroll-section release",
+    "test": "yarn workspace demo test",
+    "pretest:ci": "yarn build",
+    "test:ci": "start-server-and-test http-get://localhost:3000"
   }
 }
