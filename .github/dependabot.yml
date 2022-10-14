@@ -1,7 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: npm
-    directory: '/'
+    directory: '/packages/react-scroll-section'
     schedule:
       interval: monthly
     open-pull-requests-limit: 10
@@ -9,3 +9,11 @@ updates:
       - EmaSuriano
     commit-message:
       prefix: 'fix'
+
+  - package-ecosystem: npm
+    directory: '/packages/demo'
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 10
+    assignees:
+      - EmaSuriano
