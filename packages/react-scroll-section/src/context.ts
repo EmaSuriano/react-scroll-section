@@ -1,8 +1,10 @@
 import { createContext, RefObject } from 'react';
 
-export type RefsRegister = Record<string, RefObject<HTMLElement>>;
-
-export type Meta = Record<string, unknown>;
+export type Section = {
+  id: string;
+  ref: RefObject<HTMLElement>;
+  meta: unknown;
+};
 
 export type ScrollContextType = {
   registerRef: (args: {
@@ -11,8 +13,7 @@ export type ScrollContextType = {
   }) => RefObject<HTMLElement> | null;
   unregisterRef: (id: string) => void;
   scrollTo: (section: string) => void;
-  refs: RefsRegister;
-  meta: Meta;
+  sections: Section[];
   selected: string;
 };
 

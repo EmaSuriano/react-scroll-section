@@ -6,7 +6,8 @@ import { Footer, Menu, SectionContainer } from './Builders';
 import logo from './logo.svg';
 
 function App() {
-  const [menu, setMenu] = useState<MenuKind>('static');
+  const [menu, setMenu] = useState<MenuKind>('dynamic');
+  const [sections, setSections] = useState(['s1']);
 
   return (
     <ScrollingProvider>
@@ -44,6 +45,30 @@ function App() {
           </span>
         </SectionContainer>
       </Section>
+
+      {sections.map((name) => (
+        <Section id={name} key={name}>
+          <SectionContainer>
+            <span role="img" aria-label="letter">
+              {name}
+            </span>
+            <button
+              onClick={() => {
+                setSections((prev) => [...prev, 's' + (prev.length + 1)]);
+              }}
+            >
+              Add
+            </button>
+            <button
+              onClick={() => {
+                setSections((prev) => prev.filter((s) => s !== name));
+              }}
+            >
+              Remove
+            </button>
+          </SectionContainer>
+        </Section>
+      ))}
 
       <Footer>
         <ModeToggle menu={menu} onChange={setMenu} />

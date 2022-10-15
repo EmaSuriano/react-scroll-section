@@ -5,7 +5,7 @@ type Props = {
   id: string;
   meta?: unknown;
   children: React.ReactNode;
-} & React.HTMLProps<HTMLButtonElement>;
+} & React.HTMLProps<HTMLDetailsElement>;
 
 export const Section = ({ id, children, meta, ...rest }: Props) => {
   const { registerRef, unregisterRef } = useContext(ScrollContext);
