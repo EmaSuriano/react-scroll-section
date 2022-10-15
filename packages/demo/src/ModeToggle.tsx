@@ -1,24 +1,24 @@
 import styled from 'styled-components';
 import Toggle from 'react-toggle';
 
-export type MenuKind = 'static' | 'dynamic';
+export type Mode = 'static' | 'dynamic';
 
 type Props = {
-  menu: MenuKind;
-  onChange: (menu: MenuKind) => void;
+  mode: Mode;
+  onChange: (mode: Mode) => void;
 };
 
-const ModeToggle = ({ menu, onChange }: Props) => (
+const ModeToggle = ({ mode, onChange }: Props) => (
   <Container>
     <Toggle
-      id="menu-type"
-      defaultChecked={menu === 'static'}
+      id="mode-type"
+      defaultChecked={mode === 'dynamic'}
       onChange={({ currentTarget }) =>
-        onChange(currentTarget.checked ? 'static' : 'dynamic')
+        onChange(currentTarget.checked ? 'dynamic' : 'static')
       }
     />
-    <label htmlFor="menu-type" style={{ marginLeft: '10px' }}>
-      Menu: <b>{menu}</b>
+    <label htmlFor="mode-type" style={{ marginLeft: '10px' }}>
+      Mode: <b>{mode}</b>
     </label>
   </Container>
 );
