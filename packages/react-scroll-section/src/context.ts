@@ -21,8 +21,7 @@ const DEFAULT_CONTEXT: ScrollContextType = {
   registerRef: () => null,
   unregisterRef: () => {},
   scrollTo: () => {},
-  refs: {},
-  meta: {},
+  sections: [],
   selected: '',
 };
 
