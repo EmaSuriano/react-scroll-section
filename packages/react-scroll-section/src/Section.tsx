@@ -1,11 +1,11 @@
-import React, { useMemo, useContext, useEffect } from 'react';
+import { useMemo, useContext, useEffect, ReactNode, HTMLProps } from 'react';
 import { ScrollContext } from './context';
 
 type Props = {
   id: string;
   meta?: unknown;
-  children: React.ReactNode;
-} & React.HTMLProps<HTMLDetailsElement>;
+  children: ReactNode;
+} & HTMLProps<HTMLDetailsElement>;
 
 export const Section = ({ id, children, meta, ...rest }: Props) => {
   const { registerRef, unregisterRef } = useContext(ScrollContext);

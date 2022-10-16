@@ -15,9 +15,9 @@ export const useScrollSections = () => {
     sections,
   } = useContext(ScrollContext);
 
-  return sections.map(({ id, meta }) => ({
+  return Object.keys(sections).map((id) => ({
     id,
-    meta,
+    meta: sections[id].meta,
     onClick: () => scrollTo(id),
     selected: selectedSection === id,
   }));

@@ -1,14 +1,13 @@
-import React, {
+import {
   ReactNode,
   createRef,
   useEffect,
   useMemo,
   useState,
-  RefObject,
   useCallback,
 } from 'react';
 import { debounce } from './utils';
-import { Provider } from './context';
+import { Provider, Section } from './context';
 import smoothscroll from 'smoothscroll-polyfill';
 
 type Props = {
@@ -16,12 +15,6 @@ type Props = {
   scrollBehavior?: 'auto' | 'smooth';
   offset?: number;
   children: ReactNode;
-};
-
-type Section = {
-  id: string;
-  ref: RefObject<HTMLElement>;
-  meta: unknown;
 };
 
 if (typeof window !== 'undefined') {
@@ -35,7 +28,7 @@ export const ScrollingProvider = ({
   children,
 }: Props) => {
   const [selected, setSelected] = useState('');
-  const [sections, setSections] = useState<Section[]>([]);
+  const [sections, setSections] = useState<Record<string, Section>>({});
 
   useEffect(() => {
     document.addEventListener('scroll', debounceScroll, true);
@@ -46,12 +39,12 @@ export const ScrollingProvider = ({
   }, [sections]);
 
   const handleScroll = useCallback(() => {
-    const selectedSection = sections.reduce(
-      (acc, curr) => {
-        const sectionRef = curr.ref.current;
+    const selectedSection = Object.keys(sections).reduce(
+      (acc, id) => {
+        const sectionRef = sections[id].ref.current;
         if (!sectionRef) {
           return {
-            id: curr.id,
+            id,
             differenceFromTop: 0,
           };
         }
@@ -62,13 +55,13 @@ export const ScrollingProvider = ({
         if (differenceFromTop >= acc.differenceFromTop) return acc;
 
         return {
+          id,
           differenceFromTop,
-          id: curr.id,
         };
       },
       {
-        differenceFromTop: 9999,
         id: '',
+        differenceFromTop: 9999,
       },
     );
 
@@ -77,19 +70,19 @@ export const ScrollingProvider = ({
 
   const debounceScroll = debounce(handleScroll, debounceDelay);
 
-  const registerRef = ({ id, meta }: Omit<Section, 'ref'>) => {
+  const registerRef = ({ id, meta }: { id: string; meta: unknown }) => {
     const ref = createRef<HTMLElement>();
-    setSections((prev) => [...prev, { id, ref, meta }]);
+    setSections((prev) => ({ ...prev, [id]: { ref, meta } }));
     return ref;
   };
 
   const unregisterRef = (id: string) => {
-    setSections((prev) => prev.filter((section) => section.id !== id));
+    setSections(({ [id]: toRemove, ...rest }) => rest);
   };
 
   const scrollTo = useCallback(
     (id: string) => {
-      const section = sections.find((section) => section.id === id);
+      const section = sections[id];
       if (!section) return console.warn('Section ID not recognized!'); // eslint-disable-line
 
       setSelected(id);

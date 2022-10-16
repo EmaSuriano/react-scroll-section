@@ -1,7 +1,6 @@
 import { createContext, RefObject } from 'react';
 
 export type Section = {
-  id: string;
   ref: RefObject<HTMLElement>;
   meta: unknown;
 };
@@ -13,7 +12,7 @@ export type ScrollContextType = {
   }) => RefObject<HTMLElement> | null;
   unregisterRef: (id: string) => void;
   scrollTo: (section: string) => void;
-  sections: Section[];
+  sections: Record<string, Section>;
   selected: string;
 };
 
@@ -21,7 +20,7 @@ const DEFAULT_CONTEXT: ScrollContextType = {
   registerRef: () => null,
   unregisterRef: () => {},
   scrollTo: () => {},
-  sections: [],
+  sections: {},
   selected: '',
 };
 
