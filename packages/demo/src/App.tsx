@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ScrollingProvider, Section } from 'react-scroll-section';
+import randomColor from 'randomcolor';
 import ModeToggle, { Mode } from './ModeToggle';
 import { DynamicMenu, StaticMenu } from './Menu';
 import { Footer, Menu, SectionContainer } from './Builders';
@@ -7,10 +8,21 @@ import logo from './logo.svg';
 
 function App() {
   const [mode, setMode] = useState<Mode>('dynamic');
+  const [sections, setSections] = useState<string[]>([]);
 
   return (
     <ScrollingProvider>
-      <Menu>{mode === 'static' ? <StaticMenu /> : <DynamicMenu />}</Menu>
+      <Menu>
+        {mode === 'static' ? (
+          <StaticMenu />
+        ) : (
+          <DynamicMenu
+            onAdd={() =>
+              setSections((prev) => [...prev, `Section ${sections.length + 1}`])
+            }
+          />
+        )}
+      </Menu>
 
       <Section id="home">
         <SectionContainer>
@@ -22,7 +34,7 @@ function App() {
       </Section>
 
       <Section id="about">
-        <SectionContainer background="accent2">
+        <SectionContainer background={randomColor({ seed: 'about' })}>
           <span role="img" aria-label="hands up">
             🙋‍♂️
           </span>
@@ -30,7 +42,7 @@ function App() {
       </Section>
 
       <Section id="projects">
-        <SectionContainer background="accent3">
+        <SectionContainer background={randomColor({ seed: 'projects' })}>
           <span role="img" aria-label="computer">
             💻
           </span>
@@ -38,12 +50,30 @@ function App() {
       </Section>
 
       <Section id="contact">
-        <SectionContainer>
+        <SectionContainer background={randomColor({ seed: 'contact' })}>
           <span role="img" aria-label="letter">
             💌
           </span>
         </SectionContainer>
       </Section>
+
+      {sections.map((name) => (
+        <Section key={name} id={name}>
+          <SectionContainer background={randomColor({ seed: name })}>
+            <span>
+              {name}{' '}
+              <sup
+                aria-label="Remove section"
+                onClick={() =>
+                  setSections((prev) => prev.filter((id) => id !== name))
+                }
+              >
+                x
+              </sup>
+            </span>
+          </SectionContainer>
+        </Section>
+      ))}
 
       <Footer>
         <ModeToggle mode={mode} onChange={setMode} />

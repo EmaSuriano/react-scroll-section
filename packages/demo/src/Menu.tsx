@@ -1,7 +1,11 @@
 import { Item } from './Builders';
 import { useScrollSection, useScrollSections } from 'react-scroll-section';
 
-export const DynamicMenu = () => {
+type Props = {
+  onAdd: () => void;
+};
+
+export const DynamicMenu = ({ onAdd }: Props) => {
   const sections = useScrollSections();
 
   return (
@@ -11,6 +15,9 @@ export const DynamicMenu = () => {
           {id.toUpperCase()}
         </Item>
       ))}
+      <Item selected={false} onClick={onAdd} aria-label="Add section">
+        +
+      </Item>
     </>
   );
 };

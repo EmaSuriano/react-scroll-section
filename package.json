@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "yarn workspace react-scroll-section build",
-    "build:watch": "yarn workspace react-scroll-section build --watch",
+    "build:watch": "yarn workspace react-scroll-section build --watch --minify false",
     "start": "yarn workspace demo dev",
     "build:demo": "yarn build && yarn workspace demo build",
     "release": "yarn build && yarn workspace react-scroll-section release",

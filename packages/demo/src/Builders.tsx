@@ -27,7 +27,7 @@ export const Item = styled.li<{ selected: boolean }>`
 `;
 
 export const SectionContainer = styled.section<{
-  background?: keyof DefaultTheme;
+  background?: string;
 }>`
   min-height: 100vh;
   min-width: 320px;
@@ -39,14 +39,19 @@ export const SectionContainer = styled.section<{
   text-align: center;
   scroll-behavior: smooth;
   position: 'relative';
-  background: ${(props) => props.theme[props.background || 'background']};
+  background: ${(props) => props.background || props.theme.background};
 
   & h1 {
     font-size: 2em;
   }
 
-  & span[role='img'] {
+  & span {
     font-size: 4em;
+  }
+
+  & sup {
+    font-size: 0.5em;
+    cursor: pointer;
   }
 `;
 
