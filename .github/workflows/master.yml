@@ -1,9 +1,6 @@
 name: Master
 
-on:
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
   build:

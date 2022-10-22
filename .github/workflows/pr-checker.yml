@@ -1,9 +1,6 @@
 name: Pr Checker
 
-on:
-  pull_request:
-    branches:
-      - master
+on: [pull_request, pull_request_target]
 
 jobs:
   build:
