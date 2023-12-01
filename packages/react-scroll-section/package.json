@@ -12,7 +12,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "@types/smoothscroll-polyfill": "^0.3.1",
-    "@babel/core": "7.19.3",
+    "@babel/core": "7.23.5",
     "@types/node": "18.8.5",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
